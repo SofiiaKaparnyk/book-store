@@ -5,6 +5,8 @@ All Books
 {% endblock %}
 
 {% block content %}
+Total number of books is {{ total_number_of_books }}, the average rating is {{ average_rating }}
+<hr>
 <ul>
     {% for book in books %}
     <li><a href="{{book.get_absolute_url}}">{{book.title}} written by {{book.author}}, rating is {{book.rating}}</a></li>
