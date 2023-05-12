@@ -7,7 +7,7 @@ All Books
 {% block content %}
 <ul>
     {% for book in books %}
-    <li>{{book.title}} written by {{book.author}}, rating is {{book.rating}}</li>
+    <li><a href="{{book.get_absolute_url}}">{{book.title}} written by {{book.author}}, rating is {{book.rating}}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
