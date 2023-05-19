@@ -1,4 +1,4 @@
-from django.db.models import Avg, Min
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404, render
 
 from .models import Book
