@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Author, Book
+from .models import Address, Author, Book, Country
 
 
 @admin.register(Book)
@@ -20,3 +20,11 @@ class AuthorAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
     )
+
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ("city", "street", "post_code")
+
+
+admin.site.register(Country)

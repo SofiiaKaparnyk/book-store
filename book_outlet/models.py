@@ -11,6 +11,9 @@ class Address(models.Model):
     def __str__(self):
         return f"{self.city}, {self.street}"
 
+    class Meta:
+        verbose_name_plural = "Address"
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
@@ -19,6 +22,17 @@ class Author(models.Model):
 
     def __str__(self):
         return f"{self.first_name.title()} ({self.last_name.title()})"
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=40)
+    code = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Countries"
 
 
 class Book(models.Model):
@@ -30,6 +44,7 @@ class Book(models.Model):
         Author, null=True, on_delete=models.CASCADE, related_name="books"
     )
     is_bestselling = models.BooleanField(default=False)
+    published_countries = models.ManyToManyField(Country, related_name="books")
     slug = models.SlugField(default="", null=False, db_index=True)
 
     def get_absolute_url(self):
